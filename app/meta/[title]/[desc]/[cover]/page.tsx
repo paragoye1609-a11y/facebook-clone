@@ -9,7 +9,7 @@ export async function generateMetadata({
   const params = await searchParams;
   // const { campaign = "", fundraiserCode = "" } = await searchParams;
   const title = decodeURIComponent(
-    params.title || "Facebook – log in or sign up"
+    params.title ? params.title + " | Facebook" : "Facebook – log in or sign up"
   );
   const description = decodeURIComponent(
     params.desc ||

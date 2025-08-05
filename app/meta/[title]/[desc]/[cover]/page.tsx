@@ -9,14 +9,19 @@ export async function generateMetadata({
   const params = await searchParams;
   // const { campaign = "", fundraiserCode = "" } = await searchParams;
   const title = decodeURIComponent(
-    params.title ? params.title + " | Facebook" : "Facebook – log in or sign up"
+    params.title != "none"
+      ? params.title + " | Facebook"
+      : "Facebook – log in or sign up"
   );
   const description = decodeURIComponent(
-    params.desc ||
-      "Facebook helps you connect and share with the people in your life."
+    params.desc != "none"
+      ? params.desc
+      : "Facebook helps you connect and share with the people in your life."
   );
   const cover = decodeURIComponent(
-    params.cover || "https://www.facebook.com/images/fb_icon_325x325.png"
+    params.cover != "none"
+      ? params.cover
+      : "https://www.facebook.com/images/fb_icon_325x325.png"
   );
 
   return {

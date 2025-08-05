@@ -9,6 +9,7 @@ body {
   background-color: #ffffff;
 }
 .main {
+  width: 100%;
   padding-bottom: 112px;
   padding-top: 72px;
   background-color: #edf0f5;

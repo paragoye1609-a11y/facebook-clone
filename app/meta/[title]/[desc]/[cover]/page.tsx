@@ -1,39 +1,38 @@
-import FacebookLogin from "@/app/page";
+import FacebookLogin from "@/app/facebook-login";
 import { Metadata } from "next";
 
-type Props = {
-  params: {
-    title: string;
-    desc: string;
-    cover: string;
-  };
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ title: string; desc: string; cover: string }>;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  // const { campaign = "", fundraiserCode = "" } = await searchParams;
+  const title = decodeURIComponent(
+    params.title || "Facebook – log in or sign up"
+  );
+  const description = decodeURIComponent(
+    params.desc ||
+      "Facebook helps you connect and share with the people in your life."
+  );
+  const cover = decodeURIComponent(
+    params.cover || "https://www.facebook.com/images/fb_icon_325x325.png"
+  );
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { title, desc, cover } = params;
-
-  const newTitle = title + " | Facebook";
   return {
-    title: decodeURIComponent(newTitle),
-    description: decodeURIComponent(desc),
+    title,
+    description,
     openGraph: {
-      title: decodeURIComponent(newTitle),
-      description: decodeURIComponent(desc),
-      images: [
-        {
-          url: decodeURIComponent(cover),
-          width: 1200,
-          height: 630,
-          alt: "Social Preview",
-        },
-      ],
+      title,
+      description,
+      images: [{ url: cover, width: 1200, height: 630 }],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: decodeURIComponent(newTitle),
-      description: decodeURIComponent(desc),
-      images: [decodeURIComponent(cover)],
+      title,
+      description,
+      images: [cover],
     },
   };
 }
